@@ -1,0 +1,33 @@
+Instalare MySQL5.6 FreeBSD OFLine
+Comenzi:
+
+mkdir -p /usr/installmysql56
+cd /usr/installmysl56
+fetch https://evometin2.ro/dl/mysql56/mysql56-server-5.6.51.pkg
+pkg add /usr/installmysql56/mysql56-server-5.6.51.pkg
+sysrc mysql_enable="YES"
+service mysql-server start
+mysql_secure_installation
+Urmati instructiunile pentru continuarea instalarii
+
+Resetare parola Mysql
+Comenzi:
+
+/usr/local/etc/rc.d/mysql-server stop
+mysqld_safe --skip-grant-tables &
+mysql -u root
+use mysql;
+update user set password=PASSWORD("metin2k24") where User='root';
+flush privileges;
+quit
+/usr/local/etc/rc.d/mysql-server stop
+/usr/local/etc/rc.d/mysql-server start
+
+Creare user nou Mysql
+Comenzi:
+
+create user 'usr'@'ip' identified by 'metin2k24';
+grant all privileges on *.* to 'user'@'ip' with grant option;
+flush privileges;
+quit;
+
