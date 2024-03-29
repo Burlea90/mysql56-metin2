@@ -4,6 +4,7 @@ Comenzi:
 mkdir -p /usr/installmysql56
 cd /usr/installmysql56
 fetch https://evometin2.ro/dl/mysql56/mysql56-server-5.6.51.pkg
+fetch https://evometin2.ro/dl/mysql56/mysql56-client-5.6.51.pkg
 pkg add /usr/installmysql56/mysql56-server-5.6.51.pkg
 sysrc mysql_enable="YES"
 service mysql-server start
